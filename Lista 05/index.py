@@ -1,5 +1,7 @@
 import time
 import random
+import os
+
 
 # Função de ordenação: Selection Sort
 def selection_sort(arr):
@@ -146,13 +148,66 @@ def select_sort_algorithm():
         else:
             print("Opção inválida! Tente novamente.")
 
-# Array original
-original_array = []
 
-# Adicionando mais 500 números ao array original
-extended_array = original_array + list(range(1, 501))
+def select_input_file():
+    print("Selecione o arquivo de entrada:")
+    print("1. num.1000.1.in")
+    print("2. num.1000.2.in")
+    print("3. num.1000.3.in")
+    print("4. num.1000.4.in")
+    print("5. num.10000.1.in")
+    print("6. num.10000.2.in")
+    print("7. num.10000.3.in")
+    print("8. num.10000.4.in")
+    print("9. num.100000.1.in")
+    print("10. num.100000.2.in")
+    print("11. num.100000.3.in")
+    print("12. num.100000.4.in")
+    
+    option = int(input("Opção: "))
+    
+    if option == 1:
+        return "num.1000.1.in"
+    elif option == 2:
+        return "num.1000.2.in"
+    elif option == 3:
+        return "num.1000.3.in"
+    elif option == 4:
+        return "num.1000.4.in"
+    elif option == 5:
+        return "num.10000.1.in"
+    elif option == 6:
+        return "num.10000.2.in"
+    elif option == 7:
+        return "num.10000.3.in"
+    elif option == 8:
+        return "num.10000.4.in"
+    elif option == 9:
+        return "num.100000.1.in"
+    elif option == 10:
+        return "num.100000.2.in"
+    elif option == 11:
+        return "num.100000.3.in"
+    elif option == 12:
+        return "num.100000.4.in"
+    else:
+        print("Opção inválida! Tente novamente.")
+        return select_input_file()
 
-# Embaralhando o array estendido
+
+
+# Selecionar o arquivo de entrada
+input_file = select_input_file()
+
+# Construir o caminho completo do arquivo
+file_path = os.path.join("instancias-num", input_file)
+
+
+# Ler os valores do arquivo
+with open(file_path, "r") as file:
+    extended_array = [int(line) for line in file]
+
+# Embaralhar o array estendido
 random.shuffle(extended_array)
 
 # Chamando a função para selecionar o algoritmo de ordenação
